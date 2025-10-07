@@ -1,10 +1,10 @@
 # Fdb version 4
-["pdflatex"] 1759616003.94755 "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw1/tex/2025-210B-hw01-template-2.tex" "2025-210B-hw01-template-2.pdf" "2025-210B-hw01-template-2" 1759616004.36177 0
+["pdflatex"] 1759795910.4634 "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw1/tex/2025-210B-hw01-template-2.tex" "2025-210B-hw01-template-2.pdf" "2025-210B-hw01-template-2" 1759795910.89796 0
   "../fig/clt.png" 1759609306.05952 27325 b7b2b4d44320d3c090d6dbb7e29285b8 ""
   "../fig/clt_correlated_distribution.png" 1759609306.20949 35073 b35076ddfd3e014baa36285619561c2d ""
   "../fig/walk1D_10000trials.png" 1759603792.36983 24701 a592892fd64298139a12e88694d61906 ""
   "../fig/walk1D_100trials.png" 1759603191.86823 28732 305ba8dbe61c77ae5dfb63d79b664a2a ""
-  "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw1/tex/2025-210B-hw01-template-2.tex" 1759616003.85697 10527 76c4e8da4accf0100f81ada91d25cbdd ""
+  "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw1/tex/2025-210B-hw01-template-2.tex" 1759795910.21929 10534 790f46663597649929aa4363651723e5 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy8.tfm" 1246382020 1120 200be8b775682cdf80acad4be5ef57e4 ""
@@ -105,8 +105,8 @@
   "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759362229 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "2025-210B-hw01-template-2.aux" 1759616004.33144 772 82f5dd4c02248b069f9ae860cd311b37 "pdflatex"
-  "2025-210B-hw01-template-2.tex" 1759616003.85697 10527 76c4e8da4accf0100f81ada91d25cbdd ""
+  "2025-210B-hw01-template-2.aux" 1759795910.86622 772 82f5dd4c02248b069f9ae860cd311b37 "pdflatex"
+  "2025-210B-hw01-template-2.tex" 1759795910.21929 10534 790f46663597649929aa4363651723e5 ""
   (generated)
   "2025-210B-hw01-template-2.aux"
   "2025-210B-hw01-template-2.log"
