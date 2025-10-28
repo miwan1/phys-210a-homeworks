@@ -1,0 +1,507 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+% \eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 3 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, October 20, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+
+
+
+\begin{enumerate}
+
+\item {\bf Level ratios for Poisson processes.}
+Suppose we have a random process that produces a discrete set of real numbers $\{E_i\}$ (such as the spectrum of a random matrix, or decay times of radioactive atoms, the arrival times of buses ...).
+Consider the observable $ \min(r, 1/r)$ where 
+$r = { E_{i+1}- E_i \over E_i - E_{i-1} } $, which I'll call the level ratio statistic.
+The average of this quantity is a nice measure of the level spacing, since any overall scales cancel out.  
+
+Compute the expected value of this quantity for a Poisson process, where the events occur at a constant rate per unit $E$ and are independent of each other.  
+
+[Hint: the independence of the events means that the spacings between events are independent and distributed according to the exponential distribution $ p(x) = {1\over \mu} e^{ - x /\mu } $.]
+
+\answer{Let $S_i$ be the spacing between levels, i.e. $S_i = E_{i} - E_{i-1}$.  Then $r = S_{i+1}/S_i$.
+\begin{equation}
+    p_s(s) = \frac{1}{\mu} e^{-s/\mu}
+\end{equation}
+Let $r$ be the ratio of two independent spacings $\frac{S_{i+1}}{S_{i}}$. Then let $\tilde{r} = \min\!\left(r, \frac{1}{r}\right)$. The probability distribution of $\tilde{r}$ is given by
+\begin{equation}
+    p_{\tilde{r}}(\tilde{r}) = p_r(\tilde{r}) + p_r\!\left(\frac{1}{\tilde{r}}\right) \left| \frac{d\!\left(\frac{1}{\tilde{r}}\right)}{d\tilde{r}} \right|
+    = p_r(\tilde{r}) + \frac{1}{\tilde{r}^2} \, p_r\!\left(\frac{1}{\tilde{r}}\right)
+\end{equation}
+To find $p_r(r)$, we have
+\begin{equation}
+    p_r(r) = \int_0^{\infty} p_s(s)\, p_s(rs)\, s\, ds
+    = \int_0^{\infty} \frac{1}{\mu} e^{-s/\mu} \frac{1}{\mu} e^{-rs/\mu} s\, ds
+    = \frac{1}{\mu^2} \int_0^{\infty} s\, e^{-s(1+r)/\mu} ds
+\end{equation}
+Using $\displaystyle \int_0^{\infty} x e^{-a x} dx = \frac{1}{a^2}$ gives
+\begin{equation}
+    p_r(r) = \frac{1}{\mu^2}\cdot\frac{\mu^2}{(1+r)^2} = \frac{1}{(1+r)^2}
+\end{equation}
+\begin{equation}
+    \langle \tilde{r} \rangle = \int_0^\infty \tilde{r}\, p_{\tilde{r}}(\tilde{r})\, d\tilde{r}
+    = \int_0^1 \frac{\tilde{r}}{(1+\tilde{r})^2} d\tilde{r} + \int_1^\infty \frac{1}{\tilde{r}(1+\tilde{r})^2} d\tilde{r}
+\end{equation}
+\begin{equation}
+    \langle \tilde{r} \rangle = 2\big(\ln 2 + \tfrac{1}{2} - 1\big) = 2\ln 2 - 1 \approx 0.3863.
+\end{equation}}
+
+Bonus problem: estimate the expected value of $r$ for the GOE ensemble of random matrices 
+either (a) using the Wigner surmise,
+or
+(b) [super bonus problem] from scratch.
+Do the integral numerically if you must.
+
+
+\item{\bf Wigner surmise for $N=2$.}  
+Consider a Gaussian random real symmetric matrix $H$ that is $2 \times 2$: 
+\be H = \begin{pmatrix} x & z \\ z & y \end{pmatrix},\ee
+with $P(H ) \propto e^{ - {\tr H^2 \over {2 \sigma^2 }}} $.
+We're going to find the resulting distribution for the level spacing, $P(s)$.
+
+\begin{enumerate}
+\item Find the difference $s$ between the larger and smaller eigenvalue of $H$ as a function of the random variables $x,y,z$, i.e.~$s(x,y,z)$.  
+
+\answer{The eigenvalues of $H$ are given by
+\begin{equation}
+    \lambda_{\pm} = \frac{x+y}{2} \pm \sqrt{\left(\frac{x-y}{2}\right)^2 + z^2}
+\end{equation}
+Thus, the level spacing is
+\begin{equation}
+    s = \lambda_+ - \lambda_- = 2\sqrt{\left(\frac{x-y}{2}\right)^2 + z^2} = \sqrt{(x-y)^2 + 4z^2}
+\end{equation}
+}
+
+\item The distribution for $H$ says that $x, y, z$ are Gaussian random variables
+(though $z$ has a different width).  
+What is the distribution for $\delta \equiv x-y$? 
+\answer{The joint distribution for $x$ and $y$ is given by
+\begin{equation}
+    P(x,y) \propto e^{-\frac{x^2 + y^2}{2\sigma^2}}
+\end{equation}
+Changing variables to $\delta = x - y$ and $X = \frac{x+y}{2}$, we have
+\begin{equation}
+    P(\delta, X) \propto e^{-\frac{(X + \delta/2)^2 + (X - \delta/2)^2}{2\sigma^2}} = e^{-\frac{2X^2 + \delta^2/2}{2\sigma^2}} = e^{-\frac{X^2}{\sigma^2}} e^{-\frac{\delta^2}{4\sigma^2}}
+\end{equation}
+Integrating out $X$ gives
+\begin{equation}
+    P(\delta) \propto e^{-\frac{\delta^2}{4\sigma^2}}
+\end{equation}
+Thus, $\delta$ is a Gaussian random variable with mean $0$ and variance $2\sigma^2$.
+}
+
+\item Find the distribution for the level spacing, 
+\be P(s) = \int dx dy dz p(x,y,z) \delta(s - s(x,y,z)) .\ee
+\answer{The joint distribution for $\delta$ and $z$ is given by
+\begin{equation}
+    P(\delta, z) \propto e^{-\frac{\delta^2}{4\sigma^2}} e^{-\frac{z^2}{2\sigma^2}}
+\end{equation}
+Using the expression for $s$ from part (a), we have
+\begin{equation}
+    P(s) = \int d\delta\, dz\, P(\delta, z)\ \delta\left(s - \sqrt{\delta^2 + 4z^2}\right)
+\end{equation}} 
+
+
+[Hint: redefine variables so that $s$ is a sum in quadrature of two iid gaussian random variables.  Then go to polar coordinates.]
+
+
+
+\item Finally, choose $\sigma$ so that the mean level spacing is $1$ and write the final expression for $P(s)$. 
+
+\answer{Changing variables to polar coordinates with $\delta = r \cos\theta$ and $2z = r \sin\theta$, we have
+\begin{equation}
+    P(s) = \int_0^{\infty} dr \int_0^{2\pi} d\theta\, r\, P(r, \theta)\ \delta(s - r)
+\end{equation}
+where
+\begin{equation}
+    P(r, \theta) \propto \exp\!\left[ -\frac{r^2 \left( \frac{\cos^2\theta}{4} + \frac{\sin^2\theta}{8} \right)}{\sigma^2} \right]
+\end{equation}
+Integrating over $\theta$ gives
+\begin{equation}
+    P(s) \propto s\, e^{-\frac{s^2}{8\sigma^2}} \int_0^{2\pi} d\theta\, e^{-\\frac{s^2}{8\sigma^2} \cos 2\theta} = 2\pi s\, e^{-\frac{s^2}{8\sigma^2}} I_0\!\left(\frac{s^2}{8\sigma^2}\right)
+\end{equation}
+To normalize $P(s)$ and set the mean level spacing to $1$, we compute
+\begin{equation}
+    \langle s \rangle = \int_0^{\infty} s\, P(s)\, ds
+\end{equation}
+\begin{equation}
+    \langle s \rangle = 4\sigma \sqrt{2\pi} \cdot {}_2F_1\!\left(\frac{3}{2}, -\frac{1}{2}; 1; 1\right) = 4\sigma \sqrt{2\pi} \cdot \frac{4}{3\pi} = \frac{16\sigma}{3} \sqrt{\frac{2}{\pi}}
+\end{equation}
+Setting $\langle s \rangle = 1$ gives $\sigma = \frac{3}{16} \sqrt{\frac{\pi}{2}}$. Thus, the final expression for $P(s)$ is
+\begin{equation}
+    P(s) = \frac{32}{3\pi} s\, e^{-\frac{2s^2}{9\pi}} I_0\!\left(\frac{s^2}{9\pi}\right)
+\end{equation}}          
+
+
+\item{} [Super bonus problem] {\bf Wigner surmise for the joint distribution of 3 successive levels?}  You may have noticed when doing the previous problem that assuming that 
+$x \equiv E_{i+1} - E_i $ and $y \equiv E_{i} - E_{i-1}$ are independent and both governed by the Wigner surmise gives the wrong answer for the ratio statistic on the previous problem.  We can do better by approximating the joint distribution for $x$ and $y$.   A not bad approximation can be found by imitating what we did in this problem: just take $N=3$ and find the distribution for the two differences between the three eigenvalues.   
+The claim is that the answer will be of the form
+\be P(x,y) = Cx y  e^{ - B( x^2 + y^2) - \alpha x y } \ee
+where the constants are fixed by normalization, unit level spacing, and the correct value of the correlation between $x$ and $y$, which is 
+$ \vev{xy} - \vev{x}\vev{y} = \rho \sigma_x \sigma_y$ with $ \rho\approx - 0.27$.   
+Use this distribution to compute the level ratio statistic.
+[Warning: I haven't found a way to do this that doesn't involve horrible calculations.]
+
+
+\end{enumerate}
+
+
+
+\item{\bf Diffusion of a non-spherical particle.}
+Consider the Brownian motion of an ellipsoid in 2 dimensions. The
+variables that describe the microstate of such an object are the position of
+its center of mass denoted by a 2 D vector $\mathbf{r}$ and a unit vector
+characterizing the orientation of the ellipsoid denoted here by $\mathbf{%
+\hat{u}}$ (see figure).
+% \begin{figure}[h]
+% \begin{center}
+% {\includegraphics[height=6.0cm]{fig-ellipsoid-labelled.pdf}} \label{fig1}
+% \end{center}
+% \caption{An ellipsoidal particle projected to an ellipse in 2D. The dotted
+% line is the position of the center of mass while the solid line is the
+% orientation of the ellipse with respect to chosen lab coordinates}
+% \end{figure}
+The collisions with the fluid molecules will cause both the center of mass
+and the orientation to fluctuate. The center of mass fluctuations result in
+translational diffusion while the orientation fluctuations lead to
+rotational diffusion. The center of mass coordinate obeys an overdamped
+Langevin equation
+\[
+\partial _{t}r_{\alpha }=\eta _{\alpha }^{T}\left( t\right) ,
+\]%
+where the index $\alpha $ denotes the cartesian coordinates in 2d, i.e., $%
+\alpha =\left\{ x,y\right\} $ and $\eta _{\alpha }^{T}$ is a stochastic
+force that is Markovian in that%
+\[
+\left\langle \eta _{\alpha }^{T}\right\rangle _{c}=0;\left\langle \eta
+_{\alpha }^{T}\left( t\right) \eta _{\beta }^{T}\left( t^{\prime }\right)
+\right\rangle _{c}=2D_{\alpha \beta }\delta \left( t-t^{\prime }\right)
+\]%
+and all higher cumulants are zero and where
+\[
+D_{\alpha \beta }=D_{\Vert }\hat{u}_{\alpha }\hat{u}_{\beta }+D_{\bot
+}\left( \delta _{\alpha \beta }-\hat{u}_{\alpha }\hat{u}_{\beta }\right)
+\]%
+This anisotropic diffusion tensor reflects the fact that the particle feels
+less friction when it moves along its long axis when compared to the case
+when it moves perpendicular to the long axis.
+
+\begin{enumerate}
+\item Use the above form of the noise show that the mean square displacement
+can be given by%
+\[
+\left\langle \delta r_{\alpha }\left( t\right) \delta r_{\beta }\left(
+t\right) \right\rangle _{\eta ^{T}}=2t\overline{D}\delta _{\alpha \beta }+%
+\frac{1}{2}\Delta D\int_{0}^{t}dt^{\prime }M_{\alpha \beta }\left( \theta
+\left( t^{\prime }\right) \right)
+\]%
+where $\theta $ is the angle paramaterizing the unit vector $\mathbf{\hat{u}}
+$, i.e., $\mathbf{\hat{u}}=\cos \theta \mathbf{\hat{x}}+\sin \theta \mathbf{%
+\hat{y}}$ and%
+\[
+M_{\alpha \beta }\left( \theta \right) =\left(
+\begin{array}{cc}
+\cos 2\theta & \sin 2\theta \\
+\sin 2\theta & -\cos 2\theta%
+\end{array}%
+\right) _{\alpha \beta }
+\]%
+Be sure to identify $\overline{D}$ and $\Delta D$ in terms of $D_{\Vert }$
+and $D_{\bot }$.
+
+\answer{We have
+\begin{equation}
+    \delta r_{\alpha}(t) = \int_0^t dt' \eta_{\alpha}^T(t')
+\end{equation}
+Thus,
+\begin{equation}
+    \langle \delta r_{\alpha}(t) \delta r_{\beta}(t) \rangle_{\eta^T} = \int_0^t dt' \int_0^t dt'' \langle \eta_{\alpha}^T(t') \eta_{\beta}^T(t'') \rangle_c = \int_0^t dt' \int_0^t dt'' 2 D_{\alpha \beta} \delta(t' - t'')
+\end{equation}
+\begin{equation}
+    = 2 \int_0^t dt' D_{\alpha \beta} = 2 t D_{\alpha \beta}
+\end{equation}
+Using the expression for $D_{\alpha \beta}$, we have
+\begin{equation}
+    D_{\alpha \beta} = D_{\bot} \delta_{\alpha \beta} + (D_{\Vert} - D_{\bot}) \hat{u}_{\alpha} \hat{u}_{\beta} = \overline{D} \delta_{\alpha \beta} + \frac{1}{2} \Delta D M_{\alpha \beta}(\theta)
+\end{equation}
+where $\overline{D} = \frac{D_{\Vert} + D_{\bot}}{2}$ and $\Delta D = D_{\Vert} - D_{\bot}$. Thus,
+\begin{equation}
+    \langle \delta r_{\alpha}(t) \delta r_{\beta}(t) \rangle_{\eta^T} = 2 t \overline{D} \delta_{\alpha \beta} + \frac{1}{2} \Delta D \int_0^t dt' M_{\alpha \beta}(\theta(t'))
+\end{equation}
+}
+
+\end{enumerate}
+Now over and beyond the translational diffusion described above, the
+orientation of the ellipsoid fluctuates as well. The angle $\theta $
+parameterizing $\mathbf{\hat{u}}$ obeys a Langevin equation of its own
+\[
+\partial _{t}\theta =\eta ^{R}\left( t\right)
+\]%
+where
+\[
+\left\langle \eta ^{R}\left( t\right) \eta ^{R}\left( t^{\prime }\right)
+\right\rangle =2D_{R}\delta \left( t-t^{\prime }\right)
+\]%
+In order to get the true mean square displacement we need to calculate $%
+\left\langle r_{\alpha }\left( t\right) r_{\beta }\left( t\right)
+\right\rangle _{\eta ^{T}\eta ^{R}}$. This involves us calculating $%
+\left\langle M_{ij}\left( \theta \right) \right\rangle _{\eta ^{R}}$. We do
+this in two steps.
+
+\begin{enumerate}[resume]
+
+\item Show that 
+because the stochastic process is Gaussian, 
+$\left\langle e^{in\theta \left( t\right)
+}\right\rangle =e^{in\theta _{0}}\exp \left( -n^{2}D_{R}t\right) $. 
+%To do this we need to use the fact that the stochastic process is gaussian. 
+One way to do
+this is to note that%
+\[
+\theta \left( t\right) =\theta _{0}+\Delta \theta \left( t\right)
+\]%
+with%
+\[
+\Delta \theta \left( t\right) =\int_{0}^{t}dt^{\prime }\eta ^{R}\left(
+t^{\prime }\right)
+\]%
+From the properties of the noise, 
+\[
+\left\langle \Delta \theta \left( t\right) ^{2}\right\rangle _{c}=2D_{R}t
+\]%
+and%
+\[
+\left\langle \Delta \theta \left( t\right) ^{n}\right\rangle _{c}=0,~\forall
+n>2
+\]%
+Now, series expand $e^{in\theta \left( t\right) }$ in powers of $\Delta
+\theta \left( t\right) ^{n}$, then use the relationship between
+cumulants and moments (Eq. 2.14 in Kardar for example) to calculate $%
+\left\langle e^{in\theta \left( t\right) }\right\rangle _{\eta ^{R}}$. The
+relationship you need to know is that for a gaussian distribution,  $%
+\left\langle x^{m}\right\rangle =0$ for all odd $m$ and $\left\langle
+x^{m}\right\rangle =\frac{m!}{\left( \frac{m}{2}\right) !2^{m/2}}%
+\left\langle x^{2}\right\rangle ^{m/2}$.
+
+\answer{We have
+\begin{equation}
+    \langle e^{i n \theta(t)} \rangle = e^{i n \theta_0} \langle e^{i n \Delta \theta(t)} \rangle
+\end{equation}
+Expanding the exponential gives
+\begin{equation}
+    \langle e^{i n \Delta \theta(t)} \rangle = \sum_{m=0}^{\infty} \frac{(i n)^m}{m!} \langle (\Delta \theta(t))^m \rangle
+\end{equation}
+\begin{equation}
+    \langle (\Delta \theta(t))^m \rangle = \frac{m!}{(m/2)! 2^{m/2}} \langle (\Delta \theta(t))^2 \rangle^{m/2} = \frac{m!}{(m/2)! 2^{m/2}} (2 D_R t)^{m/2} \text{ for even } m
+\end{equation}
+Thus,
+\begin{equation}
+    \langle e^{i n \Delta \theta(t)} \rangle = \sum_{k=0}^{\infty} \frac{(i n)^{2k}}{(2k)!} \frac{(2k)!}{k! 2^k} (2 D_R t)^k = \sum_{k=0}^{\infty} \frac{(-1)^k (n^2 D_R t)^k}{k!} = e^{-n^2 D_R t}
+\end{equation}
+Finally,
+\begin{equation}
+    \langle e^{i n \theta(t)} \rangle = e^{i n \theta_0} e^{-n^2 D_R t}
+\end{equation}
+}  
+
+
+\item Now use this result to get the general expression for $\left\langle
+\delta r_{\alpha }\left( t\right) \delta r_{\beta }\left( t\right)
+\right\rangle _{\eta ^{T}\eta ^{R}}$ in terms of $\theta _{0}$ and the
+diffusion coefficients $D_{\Vert }$, $D_{\bot }$ and $D_{R}$.
+
+
+\item Suppose initially the particle is along the x direction. Calculate $%
+\left\langle \delta r_{x}\left( t\right) \delta r_{x}\left( t\right)
+\right\rangle _{\eta ^{T}\eta ^{R}}$ in two limits $t\ll1/D_{R}$ and $%
+t\gg1/D_{R}$.
+
+
+
+
+
+\item Do the same for $\left\langle \delta r_{y}\left( t\right) \delta
+r_{y}\left( t\right) \right\rangle _{\eta ^{T}\eta ^{R}}$ for the same
+initial condition.
+
+
+\item What did we learn about
+the diffusion of an aspherical particle when compared to that of a spherical
+particle?
+
+
+\answer{On short times, the diffusion constant is enhanced in the direction of the long axis, and suppressed in the transverse direction.  Eventually, the diffusion in the orientation leads it to forget which direction was which, and the result is just an overall relative in the width between the two directions.
+}
+
+
+
+\item{} [Bonus problem] Simulate Brownian motion of ellipsoidal particles and compare with your answers.
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
+
