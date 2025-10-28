@@ -1,0 +1,418 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+% \eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 4 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, October 27, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+\begin{enumerate}
+\item{\textbf{The diffusion equation in a domain}} \\
+\answer{
+We can use the Neumann boundary conditions:
+\begin{equation}
+c(x,t) = X(x)\,T(t)
+\end{equation}
+\begin{equation}
+\partial_t c = D\,\partial_x^2 c
+\quad\Rightarrow\quad
+X(x)\,T'(t)=D\,X''(x)\,T(t)
+\end{equation}
+\begin{equation}
+\frac{T'(t)}{D\,T(t)}=\frac{X''(x)}{X(x)}=-\lambda
+\end{equation}
+\begin{equation}
+T'(t)+D\lambda\,T(t)=0,\qquad
+X''(x)+\lambda\,X(x)=0
+\end{equation}
+\begin{equation}
+X_n(x)=\cos\!\left(\frac{n\pi x}{L}\right),\quad 
+\lambda_n=\left(\frac{n\pi}{L}\right)^2,\quad n=0,1,2,\dots
+\end{equation}
+\begin{equation}
+T_n(t)=\exp\!\big(-D\lambda_n t\big)=
+\begin{cases}
+1,& n=0,\\[2pt]
+\exp\!\!\left[-D\left(\frac{n\pi}{L}\right)^2 t\right],& n\ge1.
+\end{cases}
+\end{equation}
+\begin{equation}
+c(x,t)=A_0 X_0 + \sum_{n=1}^\infty A_n\,X_n(x)\,T_n(t)
+= A_0+\sum_{n=1}^\infty A_n
+\cos\!\left(\frac{n\pi x}{L}\right)
+e^{-D(n\pi/L)^2 t}.
+\end{equation}
+Now solving the coefficients:
+\begin{equation}
+A_0=\frac{1}{2L}\int_{-L}^{L} f(x)\,dx,\qquad
+A_n=\frac{1}{L}\int_{-L}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right)dx
+\quad(n\ge1)
+\end{equation}
+\begin{equation}
+A_0=c_0\Big(1-\frac{a}{L}\Big)
+\end{equation}
+\begin{equation}
+A_n
+= -\,\frac{2c_0}{n\pi}\sin\!\left(\frac{n\pi a}{L}\right)
+\end{equation}
+Plugging into the above general solution:
+\begin{equation}
+c(x,t)=c_0\Big(1-\frac{a}{L}\Big)
+-\;2c_0\sum_{n=1}^{\infty}
+\frac{\sin\!\big(\frac{n\pi a}{L}\big)}{n\pi}\,
+\cos\!\Big(\frac{n\pi x}{L}\Big)\,
+\exp\!\Big[-D\Big(\frac{n\pi}{L}\Big)^2 t\Big].
+\end{equation}
+Therefore, to plot this solution, we observe the following:
+\begin{equation}
+c(x,t)\to A_0=c_0\Big(1-\frac{a}{L}\Big),
+\quad \text{as } t\to\infty.
+\end{equation}
+\begin{equation}
+c(0,t)=c_0\Big(1-\frac{a}{L}\Big)
+-2c_0\sum_{n=1}^{\infty}\frac{\sin\!\big(\frac{n\pi a}{L}\big)}{n\pi}\,
+e^{-D(n\pi/L)^2 t}
+\end{equation}
+\begin{equation}
+c(\pm L,t)=c_0\Big(1-\frac{a}{L}\Big)
+-2c_0\sum_{n=1}^{\infty}\frac{\sin\!\big(\frac{n\pi a}{L}\big)}{n\pi}\,
+(-1)^n e^{-D(n\pi/L)^2 t}.
+\end{equation}}
+
+\item{\textbf{Active matter}} 
+    \begin{enumerate}
+    \item{Compute $\langle r_\alpha(t) \rangle$} 
+    \answer{
+    From the problem:
+    \begin{equation}
+    \dot{\mathbf r}(t)=v_0\,\hat{\mathbf n}(t)+\boldsymbol\eta^{T}(t), 
+    \qquad
+    \hat{\mathbf n}(t)=(\cos\theta(t),\,\sin\theta(t)),
+    \end{equation}
+    \begin{equation}
+    \langle \boldsymbol\eta^{T}(t) \rangle=\mathbf 0,
+    \qquad
+    \dot\theta(t)=\eta^{R}(t), 
+    \qquad
+    \langle \eta^{R}(t)\eta^{R}(t')\rangle=D_R\,\delta(t-t').
+    \end{equation}
+    \begin{equation}
+    \hat{\mathbf n}_0=(\cos\theta_0,\sin\theta_0).
+    \end{equation}
+    Compute for cosine and sine separately:
+    \begin{equation}
+    \langle \cos\theta(t) \rangle 
+    = \cos\theta_0 \langle \cos\Delta\theta \rangle
+    = \cos\theta_0\, e^{-D_R t/2},
+    \end{equation}
+    \begin{equation}
+    \langle \sin\theta(t) \rangle
+    = \sin\theta_0\, e^{-D_R t/2}.
+    \end{equation}
+    Need to deal with $\Delta\theta(t)$: 
+    \begin{equation}
+    \Delta\theta(t)\equiv \theta(t)-\theta_0
+    = \int_0^t \eta^{R}(s)\,ds .
+    \end{equation}
+    \begin{equation}
+    \langle \Delta\theta(t) \rangle
+    = \int_0^t \langle \eta^{R}(s)\rangle\,ds
+    = 0.
+    \end{equation}
+    \begin{align}
+    \langle [\Delta\theta(t)]^2 \rangle
+    &= \left\langle \int_0^t ds \int_0^t ds'\ \eta^{R}(s)\eta^{R}(s') \right\rangle \\
+    &= \int_0^t ds \int_0^t ds'\ \langle \eta^{R}(s)\eta^{R}(s') \rangle \\
+    &= \int_0^t ds \int_0^t ds'\ D_R\,\delta(s-s') \\
+    &= D_R \int_0^t ds = D_R t.
+    \end{align}
+    Therefore, 
+    \begin{equation}
+    \langle \hat{\mathbf n}(t)\rangle
+    =e^{-D_R t/2}\,\hat{\mathbf n}_0,
+    \qquad
+    \end{equation}
+    \begin{equation}
+    \langle \mathbf r(t)\rangle
+    =v_0 \int_0^t \langle \hat{\mathbf n}(s)\rangle\,ds
+    = v_0 \hat{\mathbf n}_0 \int_0^t e^{-D_R s/2}\,ds
+    =\frac{2v_0}{D_R}\left(1-e^{-D_R t/2}\right)\hat{\mathbf n}_0.
+    \end{equation}
+    \begin{equation}
+    \langle r_\alpha(t)\rangle
+    =\frac{2v_0}{D_R}\left(1-e^{-D_R t/2}\right)\,n_{0,\alpha},
+    \qquad \alpha\in\{x,y\}.
+    \end{equation}}
+    \item Show that
+    \begin{equation*}
+    \hskip-.7in
+    \left\langle \mathbf{\hat{n}}\left( t\right) \mathbf{\hat{n}}\left(
+    t^{\prime }\right) \right\rangle = A \left(
+    \begin{array}{cc}
+    \begin{array}{c}
+    \cos 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }+2\min \left(
+    t,t^{\prime }\right) \right] \right)  \\
+    +\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left( t,t^{\prime }\right) %
+    \right] \right)
+    \end{array}
+    & \sin 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left(
+    t,t^{\prime }\right) \right] \right)  \\
+    \sin 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left(
+    t,t^{\prime }\right) \right] \right)  &
+    \begin{array}{c}
+    -\cos 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }+2\min \left(
+    t,t^{\prime }\right) \right] \right)  \\
+    +\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left( t,t^{\prime }\right) %
+    \right] \right)
+    \end{array}%
+    \end{array}%
+    \right)
+    \end{equation*}
+    and find the constant $A$.\\
+    \answer{From part (a), we have calculated $\langle \hat{\mathbf n}(t)\rangle
+    =e^{-D_R t/2}\,\hat{\mathbf n}_0,
+    \qquad$. 
+    \begin{equation}
+    \left\langle e^{i[\theta(t)-\theta(t')]} \right\rangle
+    = \exp\!\left[-\frac{D_R}{2}\left(t + t' - 2\min(t,t')\right)\right],
+    \end{equation}
+    \begin{equation}
+    \left\langle e^{i[\theta(t)+\theta(t')]} \right\rangle
+    = e^{i2\theta_0}\,
+    \exp\!\left[-\frac{D_R}{2}\left(t + t' + 2\min(t,t')\right)\right].
+    \end{equation}
+    \begin{equation}
+    A=\tfrac12
+    \end{equation}
+    }
+    \item{Compute $\langle r_\alpha(t) r_\beta(t) \rangle$}\\ 
+    \answer{
+    % === Active Brownian Particle: \langle r_\alpha(t) r_\beta(t) \rangle and MSD ===
+    % Equations of motion and noises
+    \begin{equation}
+    \dot{\mathbf r}(t)=v_0\hat{\mathbf n}(t)+\boldsymbol{\eta}^{T}(t), 
+    \qquad
+    \dot{\theta}(t)=\eta^{R}(t),
+    \qquad
+    \hat{\mathbf n}(t)=(\cos\theta,\sin\theta),
+    \end{equation}
+    \begin{equation}
+    \langle \eta^T_\alpha(t)\eta^T_\beta(t')\rangle=2D_T\,\delta_{\alpha\beta}\delta(t-t'),
+    \qquad
+    \langle \eta^R(t)\eta^R(t')\rangle=D_R\,\delta(t-t').
+    \end{equation}
+    % Position as time integral
+    \begin{equation}
+    r_\alpha(t)=v_0\int_0^t n_\alpha(s)\,ds+\int_0^t \eta^T_\alpha(s)\,ds .
+    \end{equation}
+    % Second moment decomposition
+    \begin{align}
+    \langle r_\alpha(t) r_\beta(t)\rangle
+    &=v_0^2\!\int_0^t\!ds\!\int_0^t\!ds'\,\langle n_\alpha(s)n_\beta(s')\rangle
+    +\int_0^t\!ds\!\int_0^t\!ds'\,\langle \eta^T_\alpha(s)\eta^T_\beta(s')\rangle .
+    \end{align}
+    % Translational noise contribution
+    \begin{equation}
+    \int_0^t ds \int_0^t ds'\, 2D_T\,\delta_{\alpha\beta}\delta(s-s')
+    =2D_T\,t\,\delta_{\alpha\beta}.
+    \end{equation}
+    % Orientation correlator
+    \begin{equation}
+    \langle n_\alpha(s)n_\beta(s')\rangle
+    =\frac{1}{2}\,e^{-\frac{D_R}{2}|s-s'|}\,\delta_{\alpha\beta}.
+    \end{equation}
+    % Double-time integral of the exponential kernel
+    \begin{equation}
+    \int_0^t ds\int_0^t ds'\,e^{-a|s-s'|}
+    =\frac{2}{a}\left[t-\frac{1-e^{-a t}}{a}\right],
+    \qquad a\equiv \frac{D_R}{2}.
+    \end{equation}
+    % Final tensor result
+    \begin{equation}
+    \langle r_\alpha(t) r_\beta(t)\rangle
+    =\delta_{\alpha\beta}\left[
+    2D_T\,t
+    +\frac{2v_0^2}{D_R}\,t
+    -\frac{4v_0^2}{D_R^2}\left(1-e^{-\frac{D_R}{2}t}\right)
+    \right].
+    \end{equation}
+    % Mean-squared displacement (trace in 2D)
+    \begin{equation}
+    \langle |\mathbf r(t)|^2\rangle
+    =4D_T\,t+\frac{4v_0^2}{D_R}\,t
+    -\frac{8v_0^2}{D_R^2}\left(1-e^{-\frac{D_R}{2}t}\right).
+    \end{equation}}
+    \item{Now analyze the form of the mean square displacement at short times}
+    \answer{
+    \paragraph{Short time $t\ll D_R^{-1}$.}
+    \begin{equation}
+    \langle |\mathbf r(t)|^2\rangle
+    = v_0^2 t^2 + 4 D_T t + O(t^3),
+    \end{equation}
+    \paragraph{Long time $t\gg D_R^{-1}.$}
+    Since $\(e^{-D_R t/2}\to 0\),$
+    \begin{equation}
+    \langle r_\alpha(t) r_\alpha(t)\rangle
+    \simeq 2\left(D_T+\frac{v_0^2}{D_R}\right)t,
+    \qquad
+    \langle |\mathbf r(t)|^2\rangle
+    \simeq 4\left(D_T+\frac{v_0^2}{D_R}\right)t,
+    \end{equation}}
+    \end{enumerate}
+\end{enumerate}
+\end{document}

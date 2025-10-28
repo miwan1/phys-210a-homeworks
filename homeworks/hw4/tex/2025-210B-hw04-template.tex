@@ -1,0 +1,325 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+%\eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 4 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, October 27, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+
+
+
+\begin{enumerate}
+
+
+\item {\bf The diffusion equation in a domain.}
+Let's make a crude 1d model of an elongated e-coli cell, as an interval with coordinate $x \in [-L,L]$.  
+Let $c(x,t)$ be the concentration of GFP (green fluorescent protein, a genetically-attachable marker) in an e-coli cell, a function of position and time.
+The initial concentration (after a strip of GFP is photobleached (removed)
+across the short axis of the cell) is
+\be
+c\left( x,0\right) =\begin{cases}
+c_{0}, & -L\leq x\leq -a \\
+0, & -a\leq x\leq a \\
+c_{0}, & a\leq x\leq L%
+\end{cases}.
+\ee
+Let's find the 
+profile for concentration of GFP as a function of time after photobleaching.
+Assume that the concentration satisfies the diffusion equation
+\[
+\partial _{t}c\left( x,t\right) =D\partial _{x}^{2}c\left( x,t\right)~.
+\]%
+The concentration is subject to the boundary condition
+\[
+\partial _{x}c\left( x,t\right) =0 \text{ for }  x=\pm L
+\]%
+i.e., GFP cannot leak out of my e-coli.
+
+
+\begin{enumerate}
+\item Find the concentration $c(x,t)$ analytically.
+
+
+Plot the concentration as a function of {\cor time} in units of $c_0$.
+
+
+\item{} [bonus problem] Discretize the interval and solve the equation numerically.
+If you're doing it numerically, you can also do it in 2d or 3d: 
+put boundary conditions that GFP does not leak out of the cell (the shape of the cell is up to you), and initial conditions that a segment of width $2a$ is removed from the middle of the cell.  
+
+
+A nice way to think about solving the diffusion equation numerically on a grid is that at each time step we simply take the average of the values of the neighbors of each site.   (Of course you can do better with a fixed grid size by using a better approximation to the second derivative.)
+
+
+
+
+
+\item{} [bonus] Read \htmladdnormallink{this paper}{10.1128/JB.188.10.3442-3448.2006} that inspired this problem and write a few words about what you learned from it.
+
+\end{enumerate}
+
+
+\item {\bf Active matter.} A self-propelled particle is exactly as the name suggests, propelled by
+either internal forces or external fuel source. Inanimate realizations
+include diffusophoretic janus colloids and vibrated granular rods. Let us
+consider a particle confined to a plane. The motion of a self-propelled
+particle is typically described by a set of equations of the form%
+\begin{equation*}
+\partial _{t}\mathbf{r}=v_{0}\mathbf{\hat{n}}+\bm{\eta }^{T}
+\end{equation*}%
+\begin{equation*}
+\partial _{t}\theta =\eta ^{R}
+\end{equation*}%
+In the above, $r$ is the center of mass of the particle and it moves along a
+unit vector $\hat{n}=\cos \theta \hat{x}+\sin \theta \hat{y}$ that is pinned
+to its body axis with a velocity $v_{0}$. The self propulsion is not perfect
+in that it meanders a bit. This is captured by the $\theta $ equation where $
+\eta ^{R}$ is a stochastic white noise that causes the direction to
+fluctuate. $\eta ^{T}$ is the translational white noise that gives rise to
+diffusion like we have already seen. Assume as usual that the noise correlations have zero mean,
+\begin{equation*}
+\left\langle \eta _{\alpha }^{T}\left( t\right) \eta _{\beta }^{T}\left(
+t^{\prime }\right) \right\rangle _{T}=2D_{T}\delta _{\alpha \beta }\delta
+\left( t-t^{\prime }\right)
+\end{equation*}%
+and%
+\begin{equation*}
+\left\langle \eta ^{R}\left( t\right) \eta ^{R}\left( t^{\prime }\right)
+\right\rangle _{R}=D_{R}\delta \left( t-t^{\prime }\right)
+\end{equation*}%
+and all higher cumulants are zero, i.e., the noise is Gaussian. This is a
+model for active matter that is called Active Brownian Particle (ABP). In
+the following problem we want to compute the mean square dispacement $
+\left\langle r_{\alpha }\left( t\right) r_{\beta }\left( t\right)
+\right\rangle $.
+
+\begin{enumerate}
+\item Compute $ \vev{r_\alpha(t)} $.   
+
+
+\item Show that
+\begin{equation*}
+\hskip-.7in
+\left\langle \mathbf{\hat{n}}\left( t\right) \mathbf{\hat{n}}\left(
+t^{\prime }\right) \right\rangle = A \left(
+\begin{array}{cc}
+\begin{array}{c}
+\cos 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }+2\min \left(
+t,t^{\prime }\right) \right] \right)  \\
++\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left( t,t^{\prime }\right) %
+\right] \right)
+\end{array}
+& \sin 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left(
+t,t^{\prime }\right) \right] \right)  \\
+\sin 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left(
+t,t^{\prime }\right) \right] \right)  &
+\begin{array}{c}
+-\cos 2\theta _{0}\exp \left( -D_{R}\left[ t+t^{\prime }+2\min \left(
+t,t^{\prime }\right) \right] \right)  \\
++\exp \left( -D_{R}\left[ t+t^{\prime }-2\min \left( t,t^{\prime }\right) %
+\right] \right)
+\end{array}%
+\end{array}%
+\right)
+\end{equation*}
+and find the constant $A$.
+
+
+\item Now compute  $\left\langle r_{\alpha }\left( t\right) r_{\beta }\left(
+t\right) \right\rangle $.
+
+\item Now analyze the form of the mean square displacement at short times
+i.e., $t\ll \frac{1}{D_{R}}$ and at long times, i.e., $t\gg \frac{1}{D_{R}}$ and
+see what that tells you.
+
+
+\item Let us set $D_{T}$ $=0$ and $\theta(0)=0$. Show that the ABP can equivalently be
+represented by Langevin equations%
+\begin{equation*}
+\partial _{t}\mathbf{r}=\bm{Z }
+\end{equation*}%
+where $Z$ is a Gaussian random variable with
+\begin{equation*}
+\left\langle Z_{\alpha }\left( t\right) Z_{\beta }\left( t^{\prime }\right)
+\right\rangle _{c}=2D_{eff}\delta _{\alpha \beta }e^{-D_{R}|t-t^{\prime }|}
+\end{equation*}%
+and identify $D_{eff}$ ($c$ is for `connected').
+What must we take for $\vev{Z_\alpha(t)}_Z$?
+
+
+\item{} [Bonus problem] Simulate a swarm of such (non-interacting) walkers in the presence of boundaries.  
+Do you notice anything funny happening at the boundaries?
+
+[Hint: keep track of the $\theta$ variable as well (which evolves in a way you understand) as the $x$ and $y$ variables.]
+
+\item{} [Bonus problem] Suppose that the walkers interact with each other via a hard-core repulsion, i.e.~they cannot come to close.  What do you observe about the behavior of your swarm?
+
+\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+\end{enumerate}
+\end{document}
