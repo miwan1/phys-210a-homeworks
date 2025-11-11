@@ -1,0 +1,404 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+%\eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 6 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, November 10, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+
+
+
+\begin{enumerate}
+\item {\bf Positivity and Fokker-Planck.}
+Consider the Fokker-Planck equation for the evolution of the probability density $P(x,t) \equiv P(x,t|0,0)$
+in 1d,
+\be \partial_t P(x,t) = D \partial_x \( \partial_x P + {1\over T} U' P \)
+\equiv - \hat L P.\ee
+(I used the fluctuation-dissipation relation to eliminate the friction coefficient $\mu = D/T$.)
+Let $ P(x,t) \equiv \sqrt{P_\text{eq}(x)} Q(x,t) $, 
+where $P_\text{eq}(x) \equiv e^{ - U(x)/T}$ is the equilibrium distribution.
+
+\begin{enumerate}
+\item Show that the FP equation can be written as $\partial_t Q = - A^\dagger A Q $ for some operator $A$.
+Since $A^\dagger A \geq 0$, we see that all the eigenvalues of $\hat L$ must be non-negative.
+
+\answer{
+    \be \partial_t P = e^{ - U/2T } \partial_t Q \ee
+    \be e^{-U/2T} \partial_t Q = D \partial_x \( \partial_x \( e^{ - U/2T } Q \) + {1\over T} U' e^{ - U/2T } Q \) \ee
+    \be \partial_x(e^{-U/2T}Q)+ {1\over T} U' e^{-U/2T}Q = e^{-U/2T} ( \partial_x Q - U'/2T Q + U'/T Q ) = e^{-U/2T} ( \partial_x Q + U'/2T Q ) \ee
+    \be D \partial_x \( e^{-U/2T} ( \partial_x Q + U'/2T Q ) \) = D e^{-U/2T} ( \partial_x^2 Q + U'/T \partial_x Q + ( U''/2T - (U')^2/4T^2 ) Q ) \ee
+    This is equal to
+    \be De^{-U/2T} ( \partial_x - U'/2T ) ( \partial_x + U'/2T ) Q \ee
+    Therefore, 
+    \be \partial_t Q = D ( \partial_x - U'/2T ) ( \partial_x + U'/2T ) Q \ee
+    \be \partial_t Q = - A^\dagger A Q \ee
+    where
+    \be A = \sqrt{D} ( \partial_x + U'/2T ) , ~~~ A^\dagger = \sqrt{D} ( - \partial_x + U'/2T ) . \ee 
+}
+
+
+\item Show that if $U(x) = \kappa x^2 /2 $ is quadratic (the Ornstein-Uhlenbeck process), then $A^\dagger$ and $A$ are the usual raising and lowering operators for a quantum mechanical harmonic oscillator.
+Find the steady-state distribution and work out the spectrum of relaxation times in this case.
+
+\answer{
+    \be U(x) = \kappa x^2 /2  \implies U'(x) = \kappa x \ee
+    \be U'/2T = \kappa x / 2T \implies U'/2T = \alpha x\ee where $ \alpha \equiv \kappa / 2T $.\\
+    We can see that $A$ and $A^\dagger$ are the raising and lowering operators of a harmonic oscillator.
+    \be A = \sqrt{D} ( \partial_x + \alpha x ) , ~~~ A^\dagger = \sqrt{D} ( - \partial_x + \alpha x ) . \ee
+    Steady state:
+    \be AQ_0 = 0 \implies ( \partial_x + \alpha x ) Q_0 = 0 \implies Q_0(x) = C e^{ - \alpha x^2 /2 } \ee
+    \be C = \( {\alpha \over 2 \pi } \)^{1/4} \text{ from normalization } \ee
+    \be \left[A^\dagger, A \right] = \frac{D\kappa}{T} = \gamma \ee
+    So the FP equation for each mode is
+    \be \partial_t Q_n = -(A^\dagger A)Q_n = -n\gamma Q_n \ee
+    \be Q_n(x,t) = Q_n(x,0) e^{-n\gamma t} \ee
+    Thus the relaxation times are
+    \be \tau_n = {1 \over n \gamma } = { T \over n D \kappa } \ee
+    where n = 0, 1, 2, ...
+}
+
+\end{enumerate}
+
+
+\item {\bf Coarse-graining.} 
+ Why can we describe a complicated reaction in terms of just one coordinate $x$ (as we do, for example, in the next problem)?   
+Suppose that there are really many variables, not just $x$ but also $y_1, y_2 \cdots y_N$.  Then the joint overdamped Langevin equations read 
+\be\label{eq:langevin-xy} \mu \dot x = - \partial_x U(x, y) + \xi(t) , ~~~
+\mu_i \dot y_i = - \partial_{y_i} U(x,y) + \xi_i \ee
+with $ \vev{ \xi_i(t) \xi_j(t') } = 2 T \mu_i \delta_{ij} \delta(t-t')$ satisfying the fluctuation-dissipation relation.  
+
+Imagine that the dynamics of $x$ is slow compared to that of the $y$ variables, so we can do a Born-Oppenheimer approximation and integrate out the $y$ variables at fixed $x$.  
+
+\begin{enumerate}
+
+\item Verify that, under the Langevin evolution \eqref{eq:langevin-xy}, the stationary distribution of the $y_j$ at fixed $x$ is the Boltzmann distribution: 
+\be P( y | x ) = {1\over Z(x)} e^{ - U(x,y)/T } . \ee
+
+\answer{
+    Because the dynamics of y is slow compare to that of x, we can have:
+    \be \dot y_i = - {1 \over \mu_i} \partial_{y_i} U(x,y) + \eta_i(t) \ee
+    where $\eta_i(t) = {1 \over \mu_i} \xi_i(t)$ with $ \vev{ \eta_i(t) \eta_j(t') } = {2 T \over \mu_i} \delta_{ij} \delta(t-t')$.
+    Therefore, with fixed x, we have an overdamped langevin eq for each $y_i$ with:
+    \be A_i = -1/\mu_i \partial_{y_i} U(x,y) , ~~~ D_i = { T \over \mu_i } \ee
+    Suppose that $P(y,t|x)$ is the probability density of y at time t with fixed x, then the Fokker-Planck equation is:
+    \be \partial_t P = -\sum_{i=1}^{N} \partial_{y_i} ( {1\over \mu_i} \partial_{yi} U(x,y) P ) + \sum_{i=1}^{N} {T \over \mu_i} \partial_{y_i}^2 P \ee
+    This can be written as:
+    \be \partial_t P = -\sum_{i} \partial_{y_i} J_i \ee
+    where
+    \be J_i = - {1\over \mu_i} \partial_{y_i} U(x,y) P - {T \over \mu_i} \partial_{y_i} P \ee
+    At steady state, $\partial_t P = 0$, so
+    \be \sum_{i} \partial_{y_i} J_i = 0 \ee
+    A sufficient condition for this is $J_i = 0$ for all i, which gives:
+    \be - {1\over \mu_i} \partial_{y_i} U(x,y) P - {T \over \mu_i} \partial_{y_i} P = 0 \ee
+    \be \partial_{y_i} P = - {1 \over T} \partial_{y_i} U(x,y) P \ee
+    \be P(y|x) = C(x) e^{ - U(x,y)/T } \ee
+    where $C(x)$ is a normalization constant $\equiv {1 \over Z(x)}$.
+}
+
+\item Suppose that the $y$ variables equilibrate quickly, and the $x$ variable moves in their equilibrium distribution.  
+So let's average the dynamics of $x$ over the stationary distribution $P(y|x)$.  Show that this generates an equation where $x$ moves in an effective potential
+\be \mu \dot x = - \partial_x U_\text{eff}(x) + \xi(t)  \ee
+where 
+\be U_\text{eff}(x) = F(x) = - T \log Z(x)  \ee
+is the free energy at fixed $x$.
+Check that this gives the right answer when $x$ is decoupled from $y$:  $U(x,y) = u(x) + v(y)$.  
+
+\answer{
+    From the original Langevin equation for x:
+    \be \mu \dot x = - \partial_x U(x, y) + \xi(t) \ee
+    Taking the average over the stationary distribution of y at fixed x, we have:
+    \be \mu \dot x = - \int dy P(y|x) \partial_x U(x, y) + \xi(t) \ee
+    \be = - \partial_x \int dy P(y|x) U(x, y) + \xi(t) \ee
+    Using $P(y|x) = {1\over Z(x)} e^{ - U(x,y)/T }$, we get:
+    \be = - \partial_x \( {1\over Z(x)} \int dy e^{ - U(x,y)/T } U(x, y) \) + \xi(t) \ee
+    Note that:
+    \be F(x) = - T \log Z(x) = - T \log \( \int dy e^{ - U(x,y)/T } \) \ee
+    Therefore,
+    \be U_\text{eff}(x) = F(x) = - T \log Z(x)  \ee
+    So we have:
+    \be \mu \dot x = - \partial_x U_\text{eff}(x) + \xi(t)  \ee
+    In the case where $U(x,y) = u(x) + v(y)$, we have:
+    \be Z(x) = e^{-u(x)/T} \int dy e^{-v(y)/T} = e^{-u(x)/T} Z_y  \ee
+    where $Z_y$ is a constant independent of x.
+    Thus,
+    \be F(x) = - T \log Z(x) = u(x) - T\log Z_y  \ee
+    The effective potential is just $u(x)$ up to an additive constant, which does not affect the dynamics.
+}
+
+\item{} [Bonus problem] The equation \eqref{eq:langevin-xy} is not completely  general.
+We could have written 
+\be \gamma_{IJ} \dot x_J = - \partial_{x^I} U + \xi_I \ee
+where $\{x^I\}  = \{ x, y^i\} $.
+The basis in which the noise correlations is diagonal $ \vev{\xi^I(t) \xi^J(t') } = \delta^{IJ} \delta(t-t') $
+may not be the basis in which the damping matrix $\gamma_{IJ}$ is diagonal, as it was above.
+Does this change the story?
+
+\end{enumerate}
+
+\item {\bf Numerical experiments on activation over a barrier.}  
+Consider a 1d particle with a (symmetric) double-well potential 
+$U(x) = U_0 \( 1 - \( {x \over x_0}\)^2 \) ^2 $, with minima at $x=\pm x_0$ and a barrier of height $U_0$ in between.
+We want to simulate the dynamics of the overdamped Langevin equation
+\be \mu \dot x(t) = - \partial_x U(x) + \xi(t)  \ee
+where $\xi$ is Gaussian white noise with covariance $ \vev {\xi(t) \xi(t') } = 2 \mu T \delta(t-t') $. 
+
+\begin{enumerate}
+\item 
+Convince yourself or me (whichever is harder) that the Euler method 
+(integrating the Langevin equation from $t_n = n \Delta t$ to $t_{n+1} = t_n + \Delta t$ 
+and replacing $\dot x$ with $ x_{n+1} - x_n \over \Delta t $)
+gives the following discretization
+\be y_{n+1} = y_n + \alpha E y_n \( 1 - y_n^2 \) + \sqrt{ \alpha \over 2 } \eta_n \ee
+where $y\equiv x/x_0$, 
+$ \alpha = {4 T \Delta t \over \gamma x_0^2 } $ is a small number, 
+$E \equiv U_0 /T $ is the normalized activation energy for escape over the barrier,
+and $\eta_n = {\tt randn}()$ is an independent, zero-mean, unit-variance, Gaussian random variable for each time step $n$.
+
+
+\answer{
+I was not sure how to get to the discretization but will take this as given for now to simulate part (b-d). 
+}
+
+\item Implement this evolution rule numerically.  
+
+
+
+\item Check numerically that the distribution of $x$ is given by the Boltzmann distribution $P(x) \propto e^{ - U(x)/T}$. 
+
+\answer{
+    From Figure 1, we can see that the histogram of x from simulation matches well with the plotted Boltzmann distribution.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{part_b_c.png}
+        \caption{Histogram of x from simulation vs plotted Boltzmann distribution}
+    \end{figure}
+}
+
+\item Start at a small value of $E$ and gradually increase it.  
+At some point you should see isolated discrete events corresponding to the reaction happening, i.e.~the particle jumping from one well to the other.  Use the simulation to estimate the rate of these jumps and plot it as a function of $E$.  Does it give the Arrhenius law?
+\answer{
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.6\textwidth]{part_d.png}
+        \caption{Jump rate vs E from simulation}
+    \end{figure}
+    From Figure 2, we can see that the jump rate decreases as E increases, roughly following an exponential decay trend. This is consistent with the Arrhenius law in lecture notes eq. 2.144. 
+}
+\end{enumerate}
+
+
+
+
+
+
+
+\item{\bf Time-reversal symmetry of the MSR action and the fluctuation-dissipation relation.}
+[Bonus problem]
+Consider the MSR action for an overdamped Brownian particle in a potential $U(x)$:
+\be S_\text{MSR}[x, \tilde x] = \int dt \( D \tilde x^2+ \ii \tilde x \dot x - \ii \tilde x \upsilon(x) \) \ee
+where $\upsilon(x) = - \mu \partial_x U $.  
+
+\begin{enumerate}
+
+\item 
+Consider the transformation
+\be x(t) \mapsto x'(t) \equiv x(s), \tilde x(t) \mapsto \tilde x'(t) \equiv \tilde x(s) + {\ii \over D} \dot x(s) ,
+\text{ with } s\equiv - t ~.\ee
+Note that under this transformation $\dot x(t) \mapsto - \dot x(s)$.  
+Show that the action is invariant, 
+\be S_\text{MSR}[x, \tilde x] = S_\text{MSR}[x', \tilde x'] \ee
+up to boundary terms.
+
+
+\item Show that this transformation is involutive, that is, if you do it twice you get back the original configuration.  
+
+
+
+\item Convince yourself that this invariance of the action implies the Ward identity
+\be Z[J, \tilde J] = Z[J', \tilde J']  \label{eq:ward}\ee
+where 
+\be Z[J, \tilde J] \equiv \int Dx D\tilde x e^{ - S_\text{MSR}[x, \tilde x] + \int dt \( J x + \tilde J \tilde x\)  } ~
+\ee
+and 
+\be J'(t) \equiv J(-t) - {1\over D} \partial_t \tilde J(-t) , ~~~\tilde J'(t) = \tilde J(-t ) . \ee
+Note that this requires checking that the Jacobian of the transformation is 1.  
+
+
+
+\item Show that the Ward identity \eqref{eq:ward} implies the fluctuation dissipation theorem, in the form
+\be \ii \chi(t,t') = - {1\over D} \partial_{t'} C(t,t') \ee
+for $t > t'$, where 
+\be C(t,t') \equiv \vev{x(t) x(t') } = { \delta \over \delta J(t) }  { \delta \over \delta  J(t') }  Z |_{J=\tilde J=0} \ee
+is the correlation function 
+and 
+\be \ii  \chi(t,t') \equiv \ii  { \delta \vev{x(t)}_f \over \delta f(t') } |_{f=0} =
+\vev{x(t) \tilde x(t') } = { \delta \over \delta J(t) }  { \delta \over \delta \tilde J(t') }  Z |_{J=\tilde J=0}
+ \ee
+is the response function.
+
+[A paper that uses this logic to generalize the FDT away from equilibrium  is 
+\htmladdnormallink{this one}{https://arxiv.org/abs/1007.5059}.]
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}
+

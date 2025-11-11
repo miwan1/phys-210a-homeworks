@@ -1,0 +1,308 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}
+% \usepackage{bracket}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+%\eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 5 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, November 3, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+
+
+
+\begin{enumerate}
+
+\item {\bf The adjoint and the FP operator.}
+Write the Fokker-Planck equation 
+$ \partial_t P + \grad\cdot \vec J = 0 $ 
+for an overdamped particle in a potential $U(x)$ as 
+\be \partial_t P(x,t) = - \hat L P(x,t) .\ee
+Assume the fluctuation-dissipation relation $D = \mu T$, so that 
+\be P_\text{eq}(x) = e^{- U(x)/T}/Z \ee
+is a stationary solution of the FP equation.
+
+\begin{enumerate}
+\item Show that the linear operator 
+\be \hat H = {1\over \sqrt{P_\text{eq}}} \hat L \sqrt{P_\text{eq}} \ee
+is hermitian with respect to the inner product 
+$ \vev{f|g} \equiv \int_{-\infty}^\infty dx f(x) g(x) $
+(the usual $L^2$ inner product on real functions on $\mathbb{R}$).
+($\hat H$ is the linear operator in the FP equation for $P/\sqrt{P_\text{eq}}$.)
+
+For one thing, this shows that the eigenvalues of $\hat L$ are real, so that, in this problem, there are no oscillations in the approach to equilibrium.
+
+\answer{
+    \be \hat H = {1\over \sqrt{P_\text{eq}}} \hat L \sqrt{P_\text{eq}} \ee
+    let $\psi \equiv \frac{P}{\sqrt{P_{eq}}}$
+    \be \partial_t \psi = - \hat H \psi \ee
+    \be \partial_x \sqrt{P_{eq}} = -\frac{1}{2T} \sqrt{P_{eq}} U' \ee
+    \be \partial_x^2 \sqrt{P_{eq}} = \left( \frac{1}{4T^2} U'^2 - \frac{1}{2T} U'' \right) \sqrt{P_{eq}} \ee
+    Let's apply to a test function $\phi(x)$:
+    \be \hat L (\sqrt{P_{eq}} \psi) = \sqrt{P_{eq}}  \left[-\mu T \partial_x^2 \phi + \mu (\frac{U'^2}{4T} - \frac{U''}{2}) \phi \right] \ee
+    So, 
+    \be \hat H = D\left[-\partial_x^2 + \frac{U'^2}{4T^2} - \frac{U''}{2T}\right] = D\left[-\partial_x^2 + W^2 -W'\right] \ee
+    This can be factorized into
+    \be \hat H = D\left(-\partial_x + W\right)\left(\partial_x + W\right) \ee
+    where $W = \frac{U'}{2T}$.
+    Now to show it, we do
+    \be \langle f | \hat H g \rangle = D \int dx f \left(-\partial_x + W\right)\left(\partial_x + W\right) g = D \int dx f \left(-g''+Vg\right)\ee
+    \be \langle f | \hat H g \rangle = D \int dx \left(f' g' + f V g\right) = D \int dx \left(-f'' + V f\right) g = \langle \hat H f | g \rangle \ee
+    }
+
+\item{} [Bonus] Show that the adjoint of $\hat L$ with respect to this inner product is the operator appearing in the {\it backwards} FP equation describing the evolution of the {\it initial} time
+\be \partial_{t'} P(x,t| x',t') = - \hat L^\dagger P(x,t|x't') . \ee
+
+\end{enumerate}
+
+
+%\item {\bf The Ornstein-Uhlenbeck competition.}
+
+
+\item {\bf Stochastic topology.}
+Suppose you tie your dog to a flagpole (by an infinitely-extendible, massless leash that can pass through itself) in the center of a big round field and go run an errand\footnote{I've never had a dog, so I don't know if this is an OK thing to do, but let's say that the dog doesn't mind.}.  Your dog performs Brownian motion with diffusion constant $D$.  We would like to find (analytically!) the distribution for the {\it winding angle} 
+\be \theta(t) = \int_0^t dt \dot \theta 
+= \int_0^t dt \partial_t \arctan(y/x) = 
+\int_0^t dt { x \dot y - y \dot x \over x^2 + y^2 } \ee 
+of your dog's motion around the flagpole.
+
+There are some choices to make in modeling this situation (which actually make a difference for the late time behavior): 
+\begin{itemize} 
+\item The flagpole is pointlike or has a finite radius $a$.
+\item The field is bounded by $r < R$ (and your dog can't leave) or goes on forever.  
+\end{itemize}
+Pick an option for both items.  The case $a = 0$ and an unbounded region is the most interesting.  
+As a bonus problem, compare multiple options for the boundary conditions.
+
+%If you would like a hint about how to think about this problem, please ask me.
+
+\begin{enumerate}
+
+\item Simulate the problem with the various choices mentioned above and make histograms of the winding angle distribution at late times.  Warning: the case where the region is unbounded requires some care.\\
+\answer{
+    Please see the figures 1 and 2. In the case with a pointlike flagpole, the dog is able to jump through and make large angles.   
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{t=1.png}
+        \caption{Winding angle distribution at $t=1$ for pointlike flagpole with finite $R$ (left) and finite radius $a$ with finite $R$ (right).}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{t=1200.png}
+        \caption{Winding angle distribution at $t=1200$ for pointlike flagpole with finite $R$ (left) and finite radius $a$ with finite $R$ (right).}
+    \end{figure}
+}  
+
+\item Here is a much easier but much less interesting version of the problem that may help get you started on the next part.  Suppose we have a particle diffusing on a circle, $S^1$ (or a torus $\equiv \( S^1\)^d $).
+What is the probability distribution for the winding angle $\theta(t)$ as a function of time? 
+By the winding angle, I mean we should keep track of the total change in angle from its initial position, not just mod $2\pi$:
+\be \theta \equiv \int_0^t ds \dot \theta  \ee
+(or the discrete version of this formula).\\  
+\answer{
+    Angular diffusion with constant D
+    \be d\psi(t) = \sqrt{2D}dW_t, \theta(0) = 0 \ee
+    Now this is equivalent to a 1D Brownian motion with diffusion constant $D$.
+    \be \partial_t P = D\frac{\partial^2 P}{\partial \theta^2} \ee
+    \be P(\theta, 0) = \delta(\theta) \ee
+    The solution is 
+    \be P(\theta, t) = \frac{1}{\sqrt{4\pi Dt}} e^{-\frac{\theta^2}{4Dt}} \ee
+    Thus, the distribution of the winding angle is gaussian. 
+}
+
+\item Returning to the 2d story of the dog, here is the real problem.  Find analytically the probability distribution $P(\theta, t)$ for the winding angle at late times.
+Suppose the initial distribution is localized to $r=r_0$.
+
+Here are some hints for the case with unbounded domain.
+
+%Hint 0: a possibly-useful warmup problem is to solve the free-space diffusion equation in 2d using polar coordinates, in the case where the walker starts at $(x,y) = (x_0, 0)$.  
+\begin{itemize}
+\item The following integral is useful: 
+\be \int_0^\infty dk k J_{|m|}(kr_0)  J_{|m|}(k r) e^{ - k^2 t} = {1\over 2t } e^{ -  { r^2 + r_0^2 \over 4 t } } I_{|m|}\( {rr_0 \over 2t } \) . \ee
+\item  if you try to do the $r$ integral under the integral over eigenvalues, you'll get nonsense.
+\end{itemize}
+
+
+
+Here are some hints for the cases with a bounded domain $R<\infty$: 
+\begin{itemize}
+\item Let $j_{m, n} $ be the location of the $n$th zero of the ordinary Bessel function $J_{m}(x)$.
+For small $m \neq 0$, it has the Taylor expansion: $(j_{|m|, 1})^2 \approx c m^2 + \mathcal{O}(m^4)$ 
+for some constant $c$.
+\item Similarly, let $j'_{m, n} $ be the location of the $n$th zero of $\partial_x J_{m}(x)$.
+For small $m \neq 0$, it has the Taylor expansion: $(j'_{|m|, 1})^2 \approx c' m^2 + \mathcal{O}(m^4)$ 
+for some constant $c'$.  
+\end{itemize}
+
+
+\item{} [Bonus] Here is another wrinkle to consider: 
+suppose that $r=R$ is an absorbing barrier (say that if $r>R$, the leash breaks and your dog runs home).
+What's the distribution of the winding angle {\it given} that the leash didn't break?
+
+\item{} [Bonus] Suppose that there is a wind spiraling around the flagpole counterclockwise, which applies a drift force 
+on your dog of the form 
+$ \vec F = r \Omega(r) \hat \theta $ with
+$ \Omega(r) = { \beta \over r^2} $.
+Show that the FP equation is instead
+\be \partial_t P = - \Omega(r) \partial_\theta P + D \grad^2 P . \ee
+Now what is the late-time distribution of $\theta$?   
+
+\end{enumerate}
+
+
+\end{enumerate}
+\end{document}
+
