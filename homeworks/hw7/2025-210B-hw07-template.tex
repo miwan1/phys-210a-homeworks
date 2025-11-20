@@ -1,0 +1,389 @@
+\documentclass[12pt]{report}
+
+\newcommand\htmladdnormallink[2]{\href{#2}{#1}}
+
+\textheight 22cm
+\textwidth 15.5cm
+\oddsidemargin 0pt\evensidemargin 0pt
+%\oddsidemargin 14pt\evensidemargin 0pt
+%\topmargin -40pt
+\topmargin-30pt
+%\bottommargin0pt
+\def\baselinestretch{1.1}
+%\addtolength{\parskip}{1ex}
+\jot=.5ex
+%\parskip = 0.02in
+
+
+\setlength\arraycolsep{2pt}
+
+
+
+\usepackage{amssymb}
+\usepackage{amsmath,bm}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{amsfonts}         
+\usepackage{fancybox}   
+
+%\usepackage[numbers]{natbib}
+
+\usepackage{enumitem}
+
+\usepackage{slashed}
+
+
+
+
+\usepackage[usenames,dvipsnames]{xcolor}%http://en.wikibooks.org/wiki/LaTeX/Colors
+
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\definecolor{lightblue}{rgb}{.6,.6,0.9}
+\newcommand{\cobl}{\color{darkblue}}
+
+\newcommand{\cor}{\color{red}}
+\newcommand{\cog}{\color{darkgreen}}
+\newcommand{\cob}{\color{black}}
+
+\definecolor{uglybrown}{rgb}{0.8,  0.7,  0.5}
+
+\def\ii{{\bf i}}
+\def\Ione{\mathbb{I}}
+\def\UU{{\bf U}}
+\def\HH{{\bf H}}
+\def\pp{{\bf p}}
+\def\aa{{\bf a}}
+\def\qq{{\bf q}}
+\def\eps{\epsilon}
+\def\half{{1\over 2}}
+\def\Tr{{{\rm Tr~ }}}
+\def\tr{{\rm tr}}
+\def\Re{{\rm Re\hskip0.1em}}
+\def\Im{{\rm Im\hskip0.1em}}
+\def\ppi{\boldsymbol{\pi}}
+\def\pphi{\boldsymbol{\phi}}
+%\def\pphi{\phi}
+\def\grad{\vec \nabla}
+\def\vB{\vec B}
+\def\vE{\vec E}
+\def\vA{\vec A}
+\def\vAA{ \vec{\bf A}}
+\def\vEE{{{\vec {\bf E}}}}
+\def\vBB{{\vec {\bf B}}}
+
+\def\CL{{\cal L}}
+
+
+
+\def\bra#1{\left\langle#1\right|}
+\def\ket#1{\left|#1\right\rangle}
+\def\bbra#1{{\langle\langle}#1|}
+\def\kket#1{|#1\rangle\rangle}
+\def\vev#1{\left\langle{#1}\right\rangle}
+
+\def\ketbra#1#2{ | #1 \rangle\hskip-2pt\langle #2|}
+
+
+
+\def\be{\begin{equation}}
+\def\ee{\end{equation}}
+\def\({\left(}
+\def\){\right)}
+
+
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\def\parfig#1#2{
+\parbox{#1\textwidth}
+{\includegraphics[width=#1\textwidth]{#2}}
+}
+
+
+
+%%from  Rudro Rana Biswas
+\usepackage[pagebackref,  % this puts links to the page numbers where refs appear
+%pdftex, 
+bookmarks={false}, pdfauthor={John McGreevy}, pdftitle={Yay, physics!}]{hyperref}
+\hypersetup{colorlinks=true, 
+linkcolor=BrickRed, 
+citecolor=Violet, 
+filecolor=OliveGreen, 
+urlcolor=RoyalBlue, 
+filebordercolor={.8 .8 1}, 
+urlbordercolor={.8 .8 0}}%http://en.wikibooks.org/wiki/LaTeX/Hyperlinks
+
+
+%\usepackage{mathtools} % for inclusion arrow \xhookrightarrow{}
+
+
+\renewcommand{\theequation}{\arabic{equation}}
+\newif{\ifeq}           % defines a new condition @eq tested by the conditional \ifeq
+\eqtrue                 % if uncommented, declares @eq to be true
+%\eqfalse              % if uncommented, declares @eq to be false
+%                                %
+%                                % to use this, wrap text with the conditional, eg:
+%                                %
+%                                % \ifeq
+%                                % SHOW THIS IFF \eqtrue HAS BEEN DECLARED
+%                                % \fi
+%
+\def\answer#1
+{
+\ifeq
+\textcolor{darkblue}{#1}
+\fi
+}
+
+\begin{document}
+\begin{center}
+
+University of California at San Diego -- 
+Department of Physics --
+Prof.~John McGreevy
+
+{\Large\bf  Physics 210B Non-equilibrium  Fall 2025}\\
+{\Large\bf Assignment 7 \answer{--~~~ Solutions} }
+\end{center}
+
+
+\noindent
+\hfill {\bf Due 11:59pm {Monday, November 17, 2025}} 
+
+
+
+
+%I will add another problem later today.
+\bigskip
+\hrule
+
+
+\vskip.1in
+I got a little too excited about urn problems and this homework kind of grew out of control.  Do what you can.  In my opinion, the problems get more fun as it goes on. 
+
+\begin{enumerate}
+
+
+
+\item {\bf Brainwarmer: Waiting for Godot.}
+A physicist, testing the laws of chance, flips a coin repeatedly until it lands tails.
+
+Treat the two states of the physicist (`still flipping' and `done') as states of a random variable undergoing evolution by a Markov chain.  The current probability vector is then 
+$ \vec p = \begin{pmatrix} p_\text{flipping} \\ p_\text{done} \end{pmatrix}$.  
+\begin{enumerate}
+
+\item Write the transition matrix $W$ giving the time evolution 
+$ p_{n+1} = W p_{n} $, assuming the coin is fair.  
+
+\answer{ \be W = \begin{pmatrix} {1\over 2} & 0 \\ {1\over 2} & 1 \end{pmatrix} . \ee }
+
+
+
+
+\item Does this Markov chain satisfy detailed balance?
+\answer{To do this, we use the result from part (c)}
+
+
+
+
+\item Find the eigenvalues and right eigenvectors of $W$.  Which eigenvector is the steady state $\vec p^\star$?   Call the other eigenvector $\tilde p$.  For convenience, normalize $\tilde p$ so that its first component equals one.  
+
+
+\item An arbitrary initial state can be written as $p_0 = A p^\star + B \tilde p$.  What are the conditions on $A$ and $B$ so that $p_0$ is a valid probability distribution?  Write $p_n$ as a function of $A,B,p^\star, \tilde p$.  
+
+\end{enumerate}
+
+
+
+
+\item{\bf All Markov chains on two states.} [Bonus problem]
+
+Suppose our system has two possible states, say $\{a, b\}$.
+
+\begin{enumerate}
+\item Convince yourself that the most general time-independent discrete-time Markov chain on such a system takes the form 
+\be p_{t+1} = W p_t, ~~~\text{with} ~~~ W = \begin{pmatrix} 1 -q  & r \\ q & 1- r \end{pmatrix} . \ee
+What are the constraints on $q,r$?  
+
+\item Find $p_a(t)$, the probability to be in state $a$ after $t$ steps, given $p_a(0)$.  
+[Hints: 
+one way to do it is to just find the eigensystem for $W$.  
+Another is just to make an ansatz of the form $ p_a(t) = a x^t +b  $.]
+
+
+
+\item What is the behavior as $ t\to \infty$? 
+
+
+
+\item Is detailed balance satisfied?  
+
+\end{enumerate}
+
+
+
+
+\item {\bf Large numbers don't always help.} \label{prob:polya}
+Consider the following model of bad academic behavior.
+Initially there are two papers on the same subject which do not cite each other.  
+At each time step, a new paper is written, and its authors uniformly randomly choose one existing paper to cite.  
+The emergent network of citations will always consist of two disjoint graphs, of size $A$ and $B$ with $A + B = N$ after the $(N-2)$th time step.  
+
+The question we will study in this problem is: What is the fraction of nodes $\alpha_N \equiv A/(A + B)$ in one of these graphs?
+
+\begin{enumerate}
+\item Simulate the process to get an idea for the answer.  Plot a histogram of $\alpha_N$ for $N=1000$.  
+
+
+
+
+\item Show that at late times (large $N$), {\it in any given run of the process}, the fluctuations in this quantity decay with $N$.  That is, in any given run of the system, $\alpha_N$ approaches a definite limiting value.  
+However, show that the limiting value is uniformly distributed on the interval $(0,1)$.  
+
+[Hint: start with small $N$ and find the distribution.]
+
+
+
+
+%\item{} [Bonus problem] Suppose you take a different initial value of $A$ and $B$.  Can you predict the final distribution of $\alpha_N$?
+
+
+
+
+
+\item{} [Bonus problem] 
+Suppose that at step 0 there are $N_A$ and $N_B$ nodes in each group.  
+Show (e.g.~by induction) that the probability of there being $N_A + k$ nodes in group $A$ after the $n$th step is 
+\be P_n(k) = \begin{pmatrix} n \\ k \end{pmatrix} { B(k+N_A, n-k + N_B) \over B(N_A,N_B) } \ee
+where $ B(x,y) = { (x-1)! (y-1)! \over (x+y-1)!} $ when its arguments are integers.  
+Check that this reduces to the previous answer when $N_A = N_B=1$.  
+
+\item{} [Bonus problem] In light of the results of this problem, do you think that successful capitalists deserve the respect that society confers upon them? 
+
+
+
+
+\item Write a discrete-time master equation for the probability $P_n(k)$ of choosing $k$ $A$s after $n$ steps of the process.
+
+
+\item{} [Bonus problem] 
+Now let's take the continuum limit of this process.
+We would like to use the master equation to find a continuous distribution function for $\alpha$, the {\it fraction} of $A$s, $\alpha = {N_A + k \over N_A + N_B + n }$ where $N_A$ and $N_B$ are the initial numbers of $A$s and $B$s.  Starting from the master equation above, perform a `Kramers-Moyal expansion' of the RHS to write a Fokker-Planck equation: that is, Taylor expand about $k$ keeping terms through second order, take $n \gg 1$ fixing $N_A, N_B$, and write everything in terms of $\alpha$.  
+%(You can keep the time variable discrete.)  
+[Warning: I think this problem is quite tricky.]
+
+\item{} [Bonus problem] Find the stationary solution $P_{n+1} - P_n = 0$ of your Fokker-Planck equation and compare with the exact answer.
+
+\end{enumerate}
+
+
+
+\item{\bf Similar-looking dynamics with very different outcomes.}
+
+
+
+There are two kinds of bacteria, say red and green.  
+Initially there are 500 of each kind.
+At each time step, one red bacterium and one green bacterium are produced, but then a color-blind predator eats two bacteria.
+
+In this problem we would like to answer the following two questions: 
+(1) After a very long time, what is the probability distribution for $n_R/N$, the fraction of red bacteria in the growth medium?
+And (2) How long does it take to reach this final state? 
+
+
+To make the problem a little more interesting, we can suppose that the predator has a preference for green bacteria (meaning that the probability of eating a red one is $p_- = q {n_R \over n_G + n_R}$ with $q<1$). 
+
+
+
+\begin{enumerate}
+\item Simulate this process and see what happens.  Make a histogram of the distribution of $n_R\over N$ and $n_G\over N$ at time $T=5000$.  
+
+
+
+\item Write down the master equation for the time evolution of the probability distribution of $n_R$ and $n_G$, the number of red and green bacteria.  
+I suggest using the variable $x \equiv n_R - n_G$.
+%, that describes the time evolution of $P(x \equiv n_R - n_G)$.  
+
+Another small suggestion: 
+Under the rule above, when it changes, $|x|$ always changes by $2$, but half the time nothing happens.  
+We could simplify the rule by saying that at each time step $x$ always changes by $\pm 1$ with probabilities 
+$p_-(x) = q { n_R \over n_R + n_G} , p_+(x) = 1 - p_-(x)$.  
+
+
+\item Take a continuum limit of the master equation to derive a (discrete-time) Fokker-Planck equation for $P(x)$.
+
+
+
+
+\item Find (a continuum approximation to) the steady-state solution of the Fokker-Planck equation.
+
+
+\item {} [Bonus problem] Check that the exact answer for the steady state distribution in the bias-free case 
+is the binomial distribution 
+
+\item{} [Bonus problem]  How long does it take to reach the steady state?  
+That is, what is the leading behavior of $P(x,t) $ in its approach to the steady-state answer?
+
+
+\item Briefly, what would happen if the predator preferentially ate the {\bf less}-numerous bacteria?  
+
+
+
+\item Suppose that the update rule is replaced by the following.
+At each time step, a single bacterium {\it divides} into two bacteria of the same color (which bacterium divides is chosen independent of color), and then the color-blind predator eats a single bacterium.  
+Identify a significant difference for the late-time behavior between this rule and the previous one.  
+
+
+
+\item{} [bonus problem] Suppose that the update rule is replaced by the following.
+Each time step, each bacterium divides in two.  A color-blind predator eats exactly 1000 bacteria per time step.  
+(At time $t=0$ there are 500 red bacteria and 500 green bacteria.)
+
+After a very long time, what is the probability distribution for $n_R/N$, the fraction of red bacteria in the growth medium?
+
+How long does it take to reach this final state? 
+
+What happens if the predator doesn't eat exactly 1000 bacteria every time?
+
+\item{} [bonus problem] For each of the rules above, how robust is the late-time behavior to small modifications of the rules?
+
+\end{enumerate}
+
+
+\item {\bf The debate over Nature versus Nurture is provably a waste of time.}  
+There is a second way to describe precisely the same distribution of events we found in problem \ref{prob:polya}.
+Let's call it `the Secret Bias model'.  We pick a number $p \in [0,1]$ uniformly randomly.  
+This is the value of $\theta_N$ that the process will end up at at large $N$.  
+Then, at each step of the process we just flip a coin with bias $p$ toward $A$ to decide between $A$ or $B$.  
+To find the probability for a particular sequence $ABBABAA...$ we have to average over $p$.   
+
+\label{prob:secret-bias}
+
+\begin{enumerate}
+\item Show that this precisely gives the same distribution of outcomes as the process in problem \ref{prob:polya}.
+
+
+
+
+
+\item{} [Bonus moral]  Imagine two different ways to describe a character in a story: 
+\begin{itemize}
+\item The process in problem \ref{prob:polya}: This is like describing the character through their actions. "First, they chose to help a stranger. This made them feel more generous, so the next day they were even more likely to donate to charity. After donating, they felt..." You see the character's nature evolving with each step.
+
+\item The Secret Bias Model: This is like starting the story by saying, "Our character is inherently a very generous person (say, 80\% generous)." Because of this fixed, innate nature, they will perform many generous acts. We don't know their exact level of generosity beforehand, but their actions reveal it over time. 
+\end{itemize}
+
+Draw your own conclusions.
+
+
+\end{enumerate}
+
+
+
+\end{enumerate}
+\end{document}
+
