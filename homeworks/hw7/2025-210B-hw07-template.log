@@ -1,10 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 NOV 2025 09:58
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 NOV 2025 14:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7/2025-210B-hw07-template.tex"
-(/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7/2025-210B-hw07-template.tex
+**/Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7/2025-210B-hw07-template.tex
+(/Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7/2025-210B-hw07-template.tex
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/report.cls
@@ -346,40 +346,40 @@ Package amsmath Warning: Foreign command \over;
 {/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 [2]
-Overfull \hbox (1.16516pt too wide) in paragraph at lines 321--322
+
+[3]
+Overfull \hbox (1.16516pt too wide) in paragraph at lines 337--338
 []\OT1/cmr/m/n/12 Find (a con-tin-uum ap-prox-i-ma-tion to) the steady-state so-lu-tion of the Fokker-
  []
 
 
-Overfull \hbox (10.59723pt too wide) in paragraph at lines 331--332
+Overfull \hbox (10.59723pt too wide) in paragraph at lines 347--348
 []\OT1/cmr/m/n/12 Briefly, what would hap-pen if the preda-tor pref-er-en-tially ate the \OT1/cmr/bx/n/12 less\OT1/cmr/m/n/12 -numerous
  []
 
 
 
-[3]
+[4]
 
-[4{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-
-[5] (./2025-210B-hw07-template.aux)
+[5{/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] (./2025-210B-hw07-template.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 11126 strings out of 473190
- 168819 string characters out of 5715801
- 587477 words of memory out of 5000000
+ 11131 strings out of 473190
+ 168919 string characters out of 5715801
+ 590477 words of memory out of 5000000
  34199 multiletter control sequences out of 15000+600000
  567541 words of font info for 67 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,10n,93p,605b,760s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,10n,93p,617b,692s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on 2025-210B-hw07-template.pdf (5 pages, 140528 bytes).
+Output written on 2025-210B-hw07-template.pdf (5 pages, 143952 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 102 compressed objects within 2 object streams
- 41 named destinations out of 1000 (max. 500000)
+ 139 PDF objects out of 1000 (max. 8388607)
+ 108 compressed objects within 2 object streams
+ 46 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

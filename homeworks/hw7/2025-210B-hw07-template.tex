@@ -184,16 +184,31 @@ $ p_{n+1} = W p_{n} $, assuming the coin is fair.
 
 
 
-\item Does this Markov chain satisfy detailed balance?
-\answer{To do this, we use the result from part (c)}
+\item Does this Markov chain satisfy detailed balance? \\
+\answer{ We first look at the two right eigenvectors in part (c).
+    \be WP^\star = \begin{pmatrix} {1\over 2} & 0 \\ {1\over 2} & 1 \end{pmatrix} \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \end{pmatrix} = P^\star . \ee
+    $P^\star$ is a steady state. 
+    For detailed balance, we need to check that $W_{ij} P^\star_j = W_{ji} P^\star_i$ for all $i,j$.  The only nontrivial case is $i=1,j=2$:
+    \be W_{12} P^\star_2 = 0 \cdot 1 = 0 , ~~~ W_{21} P^\star_1 = {1\over 2} \cdot 0 = 0 . \ee
+    Yes, detailed balance is satisfied.
+}
 
 
 
 
-\item Find the eigenvalues and right eigenvectors of $W$.  Which eigenvector is the steady state $\vec p^\star$?   Call the other eigenvector $\tilde p$.  For convenience, normalize $\tilde p$ so that its first component equals one.  
-
+\item Find the eigenvalues and right eigenvectors of $W$.  Which eigenvector is the steady state $\vec p^\star$?   Call the other eigenvector $\tilde p$.  For convenience, normalize $\tilde p$ so that its first component equals one. \\ 
+\answer{ The eigenvalues are $\lambda_1 = 1$ and $\lambda_2 = {1\over 2}$.  The corresponding right eigenvectors are
+\be p^\star = \begin{pmatrix} 0 \\ 1 \end{pmatrix} , ~~~ \tilde p = \begin{pmatrix} 1 \\ -1 \end{pmatrix} . \ee
+The steady state is $p^\star$.  }
 
 \item An arbitrary initial state can be written as $p_0 = A p^\star + B \tilde p$.  What are the conditions on $A$ and $B$ so that $p_0$ is a valid probability distribution?  Write $p_n$ as a function of $A,B,p^\star, \tilde p$.  
+
+\answer{
+    \be p_0 = A \begin{pmatrix} 0 \\ 1 \end{pmatrix} + B \begin{pmatrix} 1 \\ -1 \end{pmatrix} = \begin{pmatrix} B \\ A - B \end{pmatrix} . \ee
+For this to be a valid probability distribution, we need $B \geq 0$ and $A - B \geq 0$, or $A \geq B \geq 0$.  Also, we need $B + (A - B) = A = 1$.  So the conditions are $1 \geq B \geq 0$.
+The time evolution is
+\be p_n = W^n p_0 = A p^\star + B \lambda_2^n \tilde p = \begin{pmatrix} B (1/2)^n \\ 1 - B (1/2)^n \end{pmatrix} . \ee
+}
 
 \end{enumerate}
 

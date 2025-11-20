@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1763661514.52016 "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7/2025-210B-hw07-template.tex" "2025-210B-hw07-template.pdf" "2025-210B-hw07-template" 1763661514.86191 0
-  "/Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7/2025-210B-hw07-template.tex" 1763661514.00422 13197 e35b89b9ce3fda5e7e2aebb3a98cd18b ""
+["pdflatex"] 1763679353.1944 "/Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7/2025-210B-hw07-template.tex" "2025-210B-hw07-template.pdf" "2025-210B-hw07-template" 1763679354.13075 0
+  "/Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7/2025-210B-hw07-template.tex" 1763679353.02437 14504 addfdd4b5443ca504d0e3ad6e4482060 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1136849721 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2025/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
@@ -102,11 +102,11 @@
   "/usr/local/texlive/2025/texmf-dist/tex/latex/url/url.sty" 1388531844 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "/usr/local/texlive/2025/texmf-dist/tex/latex/xcolor/xcolor.sty" 1727642399 55384 b454dec21c2d9f45ec0b793f0995b992 ""
   "/usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf" 1739380943 42148 61becc7c670cd061bb319c643c27fdd4 ""
-  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759362229 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
+  "/usr/local/texlive/2025/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1759794458 5467155 19efa205003f9ecad95fbbaa6ff24da1 ""
   "/usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt" 1741450574 3345740 46b66fdb0378f7bf5921b5eabf1762b8 ""
   "/usr/local/texlive/2025/texmf.cnf" 1741450484 577 418a7058ec8e006d8704f60ecd22c938 ""
-  "2025-210B-hw07-template.aux" 1763661514.82928 254 939b0bba5db945172e0d039f22bce67e "pdflatex"
-  "2025-210B-hw07-template.tex" 1763661514.00422 13197 e35b89b9ce3fda5e7e2aebb3a98cd18b ""
+  "2025-210B-hw07-template.aux" 1763679354.02814 254 8f5bd84cf99a38f9d8ba9d55d842a89a "pdflatex"
+  "2025-210B-hw07-template.tex" 1763679353.02437 14504 addfdd4b5443ca504d0e3ad6e4482060 ""
   (generated)
   "2025-210B-hw07-template.aux"
   "2025-210B-hw07-template.log"

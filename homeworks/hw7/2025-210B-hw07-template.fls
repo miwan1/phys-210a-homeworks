@@ -1,8 +1,8 @@
-PWD /Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7
+PWD /Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7
 INPUT /usr/local/texlive/2025/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-dist/web2c/texmf.cnf
 INPUT /usr/local/texlive/2025/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/mingzewanmba/Downloads/PHYS 210A/homeworks/hw7/2025-210B-hw07-template.tex
+INPUT /Users/mingzewan/Documents/VSCode/phys-210a-homeworks/homeworks/hw7/2025-210B-hw07-template.tex
 OUTPUT 2025-210B-hw07-template.log
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/report.cls
 INPUT /usr/local/texlive/2025/texmf-dist/tex/latex/base/report.cls
